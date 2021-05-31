@@ -9,15 +9,15 @@ class User(AbstractUser):
 
 
 class Book(models.Model):
-    bookTitle = models.CharField(max_length=255)
-    bookIsbn_Number = models.IntegerField()
-    bookDatePublished = models.DateField()
-    author = models.CharField(max_length=255)
+    Book_Title = models.CharField(max_length=255)
+    ISBN_Number = models.IntegerField()
+    DatePublished = models.DateField()
     category = models.CharField(max_length=255)
-    borrower = models.ForeignKey("Borrower", on_delete=models.CASCADE)
+    author = models.CharField(max_length=255)    
+    status = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.bookTitle)
+        return str(self.Book_Title)
 
 class Borrower(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
