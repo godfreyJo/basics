@@ -2,29 +2,13 @@
 {% load static %}
 {% block content %}
 
-    <h1>These are all the available books</h1>
-       <!-- <a href="">Add book</a> -->
-       {% for book in books %}
-       <div class="book"> 
-          
-            <ul>    
-              
-                <li> 
-                <a href=" /{{ book.pk }}/  ">{{ book }}</a>   
-                        
-
-                </li>
-               
-            </ul>    
-
-             
-
-        </div>
-         {% endfor %}
-
-       
-       <!-- <a href="/">View all books</a> -->
+    <h1>Welcome to the Books Club</h1>
+      
+     <a href=" /books">Books</a> </br>
+     </br>
+     <a href="">Borrow</a>      
+    
 
 
 
-{% endblock %}
+{% endblock content %}
