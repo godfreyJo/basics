@@ -9,8 +9,7 @@ def home(request):
     return render(request, 'home.html')
 
 def allbooks(request):
-    books = Book.objects.all()
-   
+    books = Book.objects.all()   
     context = {  
     "books":books
     }
@@ -89,6 +88,10 @@ def book_update(request, pk):
     }
     return render(request, 'bookUpdate.html', context=context)
 
-
+def book_delete(request, pk):
+    book = Book.objects.get(id=pk)
+    book.delete()
+    return redirect('/books')
+    
 
    

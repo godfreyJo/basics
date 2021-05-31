@@ -10,7 +10,11 @@
 
     <hr />
 
-    <a href="	/books">Go back to all available books</a>
+    <a href="{% url 'books:book-update' book.pk %}">Update Book Details</a>
+    <a href="{% url 'books:book-delete' book.pk %}">Delete Book</a>
+
+    <a href="{% url 'books:book-list'%}">Go back to all available books</a>
+
     
 
        
