@@ -14,7 +14,10 @@ class Book(models.Model):
     bookDatePublished = models.DateField()
     author = models.CharField(max_length=255)
     category = models.CharField(max_length=255)
-    borrower = models.ForeignKey("Borrower", on_delete=model.CASCADE)
+    borrower = models.ForeignKey("Borrower", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.bookTitle)
 
 class Borrower(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -22,6 +25,11 @@ class Borrower(models.Model):
 	dateBorrowed = models.DateField()
 	dateToReturn = models.DateField()
 	status = models.CharField(max_length=10)
+
+	def __str__(self):
+		return str(self.user)
+
+	
 
 
 

@@ -1,13 +1,30 @@
-<html>
-<head>
-    <title>Books</title>
-</head>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
-<body>
-    <h1>Home</h1>
-       <a href="">Add book</a>
-       <a href="">View all books</a>
+    <h1>These are all the available books</h1>
+       <!-- <a href="">Add book</a> -->
+       {% for book in books %}
+       <div class="book"> 
+          
+            <ul>    
+              
+                <li> 
+                <a href=" /{{ book.pk }}/  ">{{ book }}</a>   
+                        
+
+                </li>
+               
+            </ul>    
+
+             
+
+        </div>
+         {% endfor %}
+
        
+       <!-- <a href="/">View all books</a> -->
 
-</body>
-</html>
+
+
+{% endblock %}

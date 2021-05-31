@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <h1>This is the details of  {{ book.bookTitle }}</h1>
+    ISBN Number :  {{ book.bookIsbn_Number }} </br>
+    Published on: {{ book.bookDatePublished }}</br>
+    The Author is: {{ book.author }}</br>
+    {{ book.bookTitle }} falls under {{ book.category }} Category </br>
+
+    <a href="	/">Go back to all books</a>
+
+       
+{% endblock %}
