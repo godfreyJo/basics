@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <h1>These are all the available books</h1>
+      
+       {% for book in books %}
+       <div class="book"> 
+          
+            <ul>    
+              
+                <li> 
+                <a href=" /{{ book.pk }}/  ">{{ book }}</a>   
+                        
+
+                </li>
+               
+            </ul>    
+
+             
+
+        </div>
+         {% endfor %}
+
+         <hr />
+
+
+
+         <a href="/">Go back home</a>   
+         <a href="/create">Create a new Book</a>  
+    
+
+
+
+{% endblock %}

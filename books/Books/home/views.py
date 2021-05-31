@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Book, User, Borrower
-from .forms import BookForm
+from .forms import BookForm, BorrowerModelForm, BookModelForm
 
 # Create your views here.
 
@@ -58,7 +58,37 @@ def create_book(request):
     return render(request, 'bookCreate.html', context)
 
 
- 
+def new_borrower(request):
+    form = BorrowerModelForm()
+    if request.method == 'POST':
+        form = BorrowerModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/books')
+    context = {
+        'form': form
+    }
+
+    return render(request, 'borrowerCreate.html', context)
+
+
+def book_update(request, pk):
+    book = Book.objects.get(id=pk)
+    form = BookModelForm(instance=book)
+    
+    if request.method == 'POST':
+        form = BookModelForm(request.POST, instance=book)        
+        if form.is_valid():
+            form.save()
+            
+            return redirect('/books')
+
+    context = {
+        'form': form,
+        'book': book
+    }
+    return render(request, 'bookUpdate.html', context=context)
+
 
 
    

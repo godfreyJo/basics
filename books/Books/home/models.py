@@ -24,7 +24,7 @@ class Borrower(models.Model):
 	booksBorrowed = models.IntegerField()
 	dateBorrowed = models.DateField()
 	dateToReturn = models.DateField()
-	status = models.CharField(max_length=10)
+	status = models.BooleanField(default=False)
 
 	def __str__(self):
 		return str(self.user)

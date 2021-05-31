@@ -2,13 +2,16 @@
 {% load static %}
 {% block content %}
 
-    <h1>This is the details of  {{ book.bookTitle }}</h1>
-    ISBN Number :  {{ book.bookIsbn_Number }} </br>
-    Published on: {{ book.bookDatePublished }}</br>
+    <h1>{{ book.Book_Title }} Details </h1>
+    ISBN Number :  {{ book.ISBN_Number }} </br>
+    Published on: {{ book.DatePublished }}</br>
     The Author is: {{ book.author }}</br>
-    {{ book.bookTitle }} falls under {{ book.category }} Category </br>
+    {{ book.Book_Title }} falls under {{ book.category }} Category </br>
 
-    <a href="	/">Go back to all books</a>
+    <hr />
+
+    <a href="	/books">Go back to all available books</a>
+    
 
        
 {% endblock %}
