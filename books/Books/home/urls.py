@@ -7,7 +7,7 @@ app_name = "home"
 urlpatterns = [
     
     
-    path('', views.home, name='home'),
+    # path('', views.home, name='home'),
     path('books/', views.allbooks, name='book-list'),
     path('<int:pk>/', views.book_details, name='book-details'),
     path('<int:pk>/update/', views.book_update, name='book-update'),

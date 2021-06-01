@@ -5,8 +5,8 @@ from .forms import BookForm, BorrowerModelForm, BookModelForm
 # Create your views here.
 
 
-def home(request):
-    return render(request, 'home.html')
+def landing_page(request):
+    return render(request, 'landing.html')
 
 def allbooks(request):
     books = Book.objects.all()   
