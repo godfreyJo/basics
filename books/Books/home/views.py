@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Book, User, Borrower
@@ -48,6 +49,11 @@ class BookCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('books:book-list')
+    
+    def form_valid(self, form):
+        # TODO: send email
+        send_mail()
+        return super(BookCreateView, self).form_valid(form)
     
 
 

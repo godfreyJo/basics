@@ -20,13 +20,11 @@ from . import views
 from django.urls import path, include
 from home.views import landing_page, LandingPageView
 urlpatterns = [
-    path('admin/', admin.site.urls),    
+    path('admin/', admin.site.urls),
     path('', LandingPageView.as_view(), name='landing-page'),
     path('books/', include('home.urls', namespace="books")),
-    
-    
+
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    
-

@@ -5,11 +5,11 @@ class BorrowerModelForm(forms.ModelForm):
     class Meta:
         model = Borrower
         fields = (
-            'user', 
+            'user',
             'booksBorrowed',
-             'dateBorrowed', 
-             'dateToReturn', 
-             'status',
+            'dateBorrowed',
+            'dateToReturn',
+            'status',
             )
 
 class BookModelForm(forms.ModelForm):
@@ -19,7 +19,7 @@ class BookModelForm(forms.ModelForm):
             'Book_Title',
             'ISBN_Number',
             'DatePublished',
-            'category', 
+            'category',
             'author',
             'status'
 
@@ -30,10 +30,10 @@ class BookModelForm(forms.ModelForm):
 class BookForm(forms.Form):
     Book_Title = forms.CharField()
     ISBN_Number = forms.IntegerField()
-    DatePublished = forms.DateField()  
-    category = forms.CharField()   
+    DatePublished = forms.DateField()
+    category = forms.CharField()
     author = forms.CharField()
     status = forms.BooleanField()
-    
+
 
     
