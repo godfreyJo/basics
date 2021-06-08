@@ -131,3 +131,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'home.User'
 LOGIN_REDIRECT_URL = '/books/books/'
+LOGIN_URL = '/login'

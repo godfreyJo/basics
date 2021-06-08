@@ -1,5 +1,5 @@
 from django.core.mail import send_mail
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Book, User, Borrower
@@ -27,7 +27,7 @@ def landing_page(request):
     return render(request, 'landing.html')
 
 
-class BookListView(ListView):
+class BookListView(LoginRequiredMixin, ListView):
     template_name = 'books.html'
     queryset = Book.objects.all()
     context_object_name = 'books'
@@ -40,7 +40,7 @@ def allbooks(request):
     }
     return render(request, 'books.html', context)
 
-class BookDetailView(DetailView):
+class BookDetailView(LoginRequiredMixin, DetailView):
     template_name = 'bookDetailed.html'
     queryset = Book.objects.all()
     context_object_name = 'book'
@@ -53,7 +53,7 @@ def book_details(request, pk):
     
     return render(request, 'bookDetailed.html', context)
 
-class BookCreateView(CreateView):
+class BookCreateView(LoginRequiredMixin, CreateView):
     template_name = 'bookCreate.html'
     form_class = BookForm
 
@@ -114,7 +114,7 @@ def new_borrower(request):
 
     return render(request, 'borrowerCreate.html', context)
 
-class BookUpdateView(UpdateView):
+class BookUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'bookUpdate.html'
     queryset = Book.objects.all()
     form_class = BookForm
@@ -139,7 +139,7 @@ def book_update(request, pk):
     }
     return render(request, 'bookUpdate.html', context=context)
 
-class BookDeleteView(DeleteView):
+class BookDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'bookDelete.html'
     form_class = BookForm
 

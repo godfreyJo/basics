@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
@@ -6,6 +7,13 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
 	pass
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.user.username
+    
 
 
 class Book(models.Model):
@@ -20,16 +28,26 @@ class Book(models.Model):
         return str(self.Book_Title)
 
 class Borrower(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	booksBorrowed = models.IntegerField()
-	dateBorrowed = models.DateField()
-	dateToReturn = models.DateField()
-	status = models.BooleanField(default=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)    
+    booksBorrowed = models.IntegerField()
+    dateBorrowed = models.DateField()
+    dateToReturn = models.DateField()
+    status = models.BooleanField(default=False)
+    organization = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
-	def __str__(self):
-		return str(self.user)
+    def __str__(self):
+        return str(self.user)
 
-	
+
+def post_user_created_signal(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+    
+   
+post_save.connect(post_user_created_signal, sender=User)
+
+        
+
 
 
 
